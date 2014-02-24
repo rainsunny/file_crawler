@@ -1,6 +1,8 @@
 package crawler;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +17,7 @@ public class Indexer implements Runnable {
     private final BlockingQueue<File> queue;
 //    private final File indexFile;
 
-    private final Logger logger = Logger.getLogger(Indexer.class);
+    private final Logger logger = LoggerFactory.getLogger(Indexer.class);
 
     public Indexer(BlockingQueue<File> queue) {
         this.queue = queue;

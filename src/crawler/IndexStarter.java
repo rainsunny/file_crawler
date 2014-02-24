@@ -1,10 +1,13 @@
 package crawler;
 
-import org.apache.log4j.Logger;
+
 import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -19,12 +22,16 @@ public class IndexStarter {
     private static final int BOUND = 10;
     private static final int N_CONSUMERS = 6;
 
-    private static Logger logger = Logger.getLogger(IndexStarter.class);
+    private static Logger logger = LoggerFactory.getLogger(IndexStarter.class);
 
     public static void main(String[] args) {
 
 //        BasicConfigurator.configure();
-        PropertyConfigurator.configure("D:\\workspace\\file_crawler\\src\\crawler\\log4j.properties");
+
+        URL url = IndexStarter.class.getResource("");
+
+        PropertyConfigurator.configure(url.getPath() + "log4j.properties");
+
 
         if (args == null || args.length == 0) {
             logger.info("No root file defined");
